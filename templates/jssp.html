@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <title>JSSP Solver</title>
+</head>
+
+<body>
+  <div id="app" class="has-background-light" style="min-height: 100vh">
+    <section class="section">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-6">
+            <form class="box" @submit.prevent="solveInstance">
+              <div class="field is-justify-content-center">
+                <textarea name="" id="" cols="80" rows="15" v-model="instance"></textarea>
+              </div>
+              <div class="is-flex is-justify-content-center">
+                <button class="button is-primary is-light" type="submit">
+                  Solve JSSP
+                </button>
+              </div>
+            </form>
+            <ul v-if="best">
+              <div class="message is-small is-info mb-1">
+                <div class="message-body">
+                  <li class="has-text-centered block">
+                    Best schedule is:
+                    <span class="has-text-weight-bold">{{ best.best }}</span>
+                  </li>
+                </div>
+                <br>
+                <br>
+                <div class="message-body">
+                  <li class="has-text-centered block">
+                    Best total makespan is:
+                    <span class="has-text-weight-bold">{{ best.makespan }}</span>
+                  </li>
+                </div>
+                <br>
+                <br>
+                <div class="message-body">
+                  <li class="has-text-centered block">
+                    Elapsed time for solving:
+                    <span class="has-text-weight-bold">{{ best.time }} seconds</span>
+                  </li>
+                </div>
+              </div>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    var app = new Vue({
+      el: "#app",
+      data: {
+        instance: null,
+        best: null
+      },
+      computed: {
+
+      },
+      methods: {
+        solveInstance: function () {
+          axios
+            .post("/", this.instance)
+            .then((response) => {
+              this.best = response.data;
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        },
+      },
+    });
+  </script>
+</body>
+
+</html>
