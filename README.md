@@ -58,7 +58,7 @@ https://www.redalyc.org/journal/816/81662532017/
 (accessed sep. 07, 2021).  
 [13] R. Nakano y T. Yamada, «Conventional Genetic Algorithm for Job Shop Problems.», in 
 _Proceedings of the 4th International Conference on Genetic Algorithms_, San Diego, 1991, vol. 91, 
-pp. 474-479.
+pp. 474-479.  
 [14] B. M. Ombuki y M. Ventresca, «Local Search Genetic Algorithms for the Job Shop 
 Scheduling Problem», _Appl. Intell._, vol. 21, n.o 1, pp. 99-109, jul. 2004, doi: 
 10.1023/B:APIN.0000027769.48098.91.  
